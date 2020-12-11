@@ -29,7 +29,7 @@ namespace AddressBook
             }
             while (ProgramIsRunning)
             {
-                Console.WriteLine("\nChoose option \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person By City & State \n6.Display Contacts Same City \n7.Display Contacts Same State \n8.Exit");
+                Console.WriteLine("\nChoose option \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person By City & State \n6.Display Contacts Same City \n7.Display Contacts Same State \n8.View number of contacts of city and state  \n9.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -119,6 +119,18 @@ namespace AddressBook
                         }
                         break;
                     case 8:
+                        Console.WriteLine("\n Enter address book name :");
+                        string displayContacts3 = Console.ReadLine();
+                        if (abDict.ContainsKey(displayContacts3))
+                        {
+                            abDict[displayContacts3].findCountSameStateOrCityPerson();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No Address book exist with name {0} ", displayContacts3);
+                        }
+                        break;
+                    case 9:
                         ProgramIsRunning = false;
                         break;
                     default:
