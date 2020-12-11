@@ -1,5 +1,6 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AddressBook
@@ -13,8 +14,17 @@ namespace AddressBook
         }
         public void AddContact(string firstName, string lastName, string address, string city, string state, long phoneNumber, string email)
         {
-            Person person = new Person(firstName, lastName, city, state, email, phoneNumber);
-            adressBookList.Add(person);
+            bool flag = this.adressBookList.Any(item => item.FirstName == firstName && item.LastName == lastName);
+            if (!flag)
+            {
+                Person person = new Person(firstName, lastName, city, state, email, phoneNumber);
+                adressBookList.Add(person);
+                Console.WriteLine("Contact added Successfully");
+            }
+            else
+            {
+                Console.WriteLine("{0}{1} this contact already exist in Address Book :", firstName, lastName);
+            }
         }
         public void displayPerson()
         {

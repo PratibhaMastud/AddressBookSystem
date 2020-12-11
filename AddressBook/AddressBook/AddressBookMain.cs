@@ -6,6 +6,7 @@ namespace AddressBook
 {
     class AddressBookMain
     {
+        AddressBook obj = new AddressBook();
         public static void Main(String[] args)
         {
             Console.WriteLine("Welcome in Address book System");
@@ -108,7 +109,6 @@ namespace AddressBook
                 string email = Console.ReadLine();
                 addressBook.AddContact(firstName, lastName, address, city, state, phoneNumber, email);
             }
-
         }
     }
 }
