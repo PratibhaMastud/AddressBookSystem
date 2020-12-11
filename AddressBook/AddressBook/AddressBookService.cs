@@ -49,6 +49,20 @@ namespace AddressBook
 			}
 			Console.WriteLine(person);
 		}
+		public void deleteContact(String firstName, String lastName)
+		{
+			if (firstName.Equals(person.getFirstName()) && lastName.Equals(person.getLastName()))
+			{
+				person = null;
+				Console.WriteLine("Contact deleted successfully\n");
+			}
+			else
+			{
+				Console.WriteLine("name does not exist");
+			}
+
+			Console.WriteLine(person);
+		}
 	}
 }
 
