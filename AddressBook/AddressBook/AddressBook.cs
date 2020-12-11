@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,32 +6,16 @@ namespace AddressBook
 {
     class AddressBook
 	{
-        List<Person> adressBookList = new List<Person>();
-        public void addPerson()
+        List<Person> adressBookList;
+        public AddressBook()
         {
-            Console.WriteLine("Enter firstName:");
-            var firstName = Console.ReadLine();
-
-            Console.WriteLine("Enter lastName:");
-            var lastName = Console.ReadLine();
-
-            Console.WriteLine("Enter city:");
-            var city = Console.ReadLine();
-
-            Console.WriteLine("Enter state:");
-            var state = Console.ReadLine();
-
-            Console.WriteLine("Enter email:");
-            var email = Console.ReadLine();
-
-            Console.WriteLine("Enter phoneNumber:");
-            var phoneNumber = Console.ReadLine();
-
-
+            this.adressBookList = new List<Person>();
+        }
+        public void AddContact(string firstName, string lastName, string address, string city, string state, long phoneNumber, string email)
+        {
             Person person = new Person(firstName, lastName, city, state, email, phoneNumber);
             adressBookList.Add(person);
         }
-
         public void displayPerson()
         {
             Console.WriteLine("\nEntered Person Details is:");
@@ -39,18 +23,15 @@ namespace AddressBook
             {
                 Console.WriteLine("FirstName: {0}, LastName: {1}, city: {2}, state: {3}, email: {4}, phoneNumber: {5}", person.FirstName, person.LastName, person.city, person.state, person.email, person.phoneNumber);
             }
-
         }
         public void editPerson()
         {
-
             Console.WriteLine("\n enter First name to edit details:");
             string name = Console.ReadLine();
             foreach (var person in adressBookList)
             {
                 if (name.Equals(person.FirstName))
                 {
-
                     Console.WriteLine("Choose one of the following options: ");
                     Console.WriteLine("#1 Phone Number");
                     Console.WriteLine("#2 Email");
@@ -58,12 +39,11 @@ namespace AddressBook
                     Console.WriteLine("#4 State");
                     Console.WriteLine("#5 Quit");
                     int choice = Convert.ToInt32(Console.ReadLine());
-
                     switch (choice)
                     {
                         case 1:
                             Console.WriteLine("enter new Mobile number:");
-                            string mobileNo = Console.ReadLine();
+                            long mobileNo = Convert.ToInt64(Console.ReadLine());
                             person.setPhoneNumber(mobileNo);
                             Console.WriteLine("mobile no. is updated\n");
                             break;
@@ -90,23 +70,27 @@ namespace AddressBook
                             break;
                     }
                 }
-                else
-                    Console.WriteLine("Person is not registered");
             }
         }
 
         public void deletePerson()
         {
-
             Console.WriteLine("Enter firstName of the user you want to remove");
             var firstName = Console.ReadLine();
-
             Console.WriteLine("Enter lastname of the user you want to remove");
             var lastName = Console.ReadLine();
-
             adressBookList.RemoveAll(item => item.FirstName == firstName && item.LastName == lastName);
-
-
+            /* if (adressBookList.Count > 0)
+             {
+                 foreach (Person person in adressBookList) 
+                 {
+                     if (firstName.Equals(person.FirstName))
+                     {
+                         adressBookList.Remove(person);
+                         Console.WriteLine("Contact Deleted{} : ",firstName);
+                     }
+                 }
+             }*/
         }
     }
 }
