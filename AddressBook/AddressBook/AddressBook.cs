@@ -43,7 +43,29 @@ namespace AddressBook
 
             foreach (Person person in adressBookList.FindAll(item => item.city == city && item.state == state).ToList())
             {
-                Console.WriteLine("\n\n{0}\t{1}", person.FirstName, person.LastName);
+                Console.WriteLine("\n{0}\t{1}", person.FirstName, person.LastName);
+            }
+        }
+
+        public void sameCityPerson()
+        {
+            Console.WriteLine("\n Enter city for display Same city contacts ");
+            string city = Console.ReadLine();
+
+            foreach (Person person in adressBookList.FindAll(item => item.city == city).ToList())
+            {
+                Console.WriteLine("\n{0}\t{1}", person.FirstName, person.LastName);
+            }
+        }
+
+        public void sameStatePerson()
+        {
+            Console.WriteLine("\n Enter state for display Same State contacts ");
+            string state = Console.ReadLine();
+
+            foreach (Person person in adressBookList.FindAll(item => item.state == state).ToList())
+            {
+                Console.WriteLine("\n{0}\t{1}", person.FirstName, person.LastName);
             }
         }
         public void editPerson()
