@@ -34,6 +34,18 @@ namespace AddressBook
                 Console.WriteLine("FirstName: {0}, LastName: {1}, city: {2}, state: {3}, email: {4}, phoneNumber: {5}", person.FirstName, person.LastName, person.city, person.state, person.email, person.phoneNumber);
             }
         }
+
+        public void searchPerson()
+        {
+            Console.WriteLine("\n Enter city or state ");
+            string city = Console.ReadLine();
+            string state = Console.ReadLine();
+
+            foreach (Person person in adressBookList.FindAll(item => item.city == city && item.state == state).ToList())
+            {
+                Console.WriteLine("\n\n{0}\t{1}", person.FirstName, person.LastName);
+            }
+        }
         public void editPerson()
         {
             Console.WriteLine("\n enter First name to edit details:");

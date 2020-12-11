@@ -29,7 +29,7 @@ namespace AddressBook
             }
             while (ProgramIsRunning)
             {
-                Console.WriteLine("\nChoose option to procced further \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Exit");
+                Console.WriteLine("\nChoose option \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person By City & State \n6.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -83,6 +83,18 @@ namespace AddressBook
                         abDict[displayContactsInAddressBook].displayPerson();
                         break;
                     case 5:
+                        Console.WriteLine("\n Enter address book name :");
+                        string searchContacts = Console.ReadLine();
+                        if (abDict.ContainsKey(searchContacts))
+                        {
+                            abDict[searchContacts].searchPerson();
+                        }
+                        else
+                        {
+                            Console.WriteLine("No Address book exist with name {0} ", searchContacts);
+                        }
+                        break;
+                    case 6:
                         ProgramIsRunning = false;
                         break;
                     default:
