@@ -29,7 +29,7 @@ namespace AddressBook
             }
             while (ProgramIsRunning)
             {
-                Console.WriteLine("\nChoose option \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person By City & State \n6.Display Contacts Same City \n7.Display Contacts Same State \n8.View number of contacts of city and state  \n9.Display Contacts in Sorted \n10.Exit");
+                Console.WriteLine("\nChoose option \n1.Add Contact \n2.Edit Contact \n3.Delete Contact  \n4.Display Contacts \n5.Search Person By City & State \n6.Display Contacts Same City \n7.Display Contacts Same State \n8.View number of contacts of city and state  \n9.Display Contacts in Sorted \n10.Display contact in sorted by state or by city \n11.Exit");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -138,6 +138,22 @@ namespace AddressBook
                         break;
 
                     case 10:
+                        Console.WriteLine("\nEnter Address Book Name for Sort contacts based on City or State");
+                        string nameAddressBookforSorting = Console.ReadLine();
+                        Console.WriteLine("\nChoose option for sorting \n1.By State \n2.By City");
+                        int choiceSorting = Convert.ToInt32(Console.ReadLine());
+                        switch (choiceSorting)
+                        {
+                               case 1:
+                                    abDict[nameAddressBookforSorting].displayPersonInOrderByCity();
+                                    break;
+                               case 2:
+                                    abDict[nameAddressBookforSorting].displayPersonInOrderByState();
+                                    break;
+                        }
+                        break;
+
+                   case 11:
                         ProgramIsRunning = false;
                         break;
                     default:

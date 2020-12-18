@@ -44,6 +44,24 @@ namespace AddressBook
             }
         }
 
+        public void displayPersonInOrderByCity()
+        {
+            Console.WriteLine("\nEntered Person Details is in Order :");
+            foreach (var person in adressBookList.OrderBy(Key => Key.city))
+            {
+                Console.WriteLine("FirstName: {0}, LastName: {1}, city: {2}, state: {3}, email: {4}, phoneNumber: {5}", person.FirstName, person.LastName, person.city, person.state, person.email, person.phoneNumber);
+            }
+        }
+
+        public void displayPersonInOrderByState()
+        {
+            Console.WriteLine("\nEntered Person Details is in Order :");
+            foreach (var person in adressBookList.OrderBy(Key => Key.state))
+            {
+                Console.WriteLine("FirstName: {0}, LastName: {1}, city: {2}, state: {3}, email: {4}, phoneNumber: {5}", person.FirstName, person.LastName, person.city, person.state, person.email, person.phoneNumber);
+            }
+        }
+
         public void searchPerson()
         {
             Console.WriteLine("\n Enter city or state ");
