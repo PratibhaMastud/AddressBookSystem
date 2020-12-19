@@ -54,6 +54,16 @@ namespace AddressBook
             FileReadWrite.ReadTxtFile();
         }
 
+        public void WritePersonDetailCsvFile()
+        {
+            FileReadWrite.writeIntoCsvFile(adressBookList);
+        }
+
+        public void ReadPersonDetailCsvFile()
+        {
+            FileReadWrite.ReadContactsInCSVFile();
+        }
+
         public void displayPersonInOrderByCity()
         {
             Console.WriteLine("\nEntered Person Details is in Order :");
@@ -165,7 +175,6 @@ namespace AddressBook
                 }
             }
         }
-
 
         public void deletePerson()
         {
