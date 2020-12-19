@@ -1,0 +1,23 @@
+﻿First name:Prati
+Last name:mast
+Address:seawood
+City:mumbai
+State:MH  
+Phone Number:93434565675
+Email:vprati1234
+
+First name:sonu
+Last name:karas
+Address:nerul
+City:mumbai
+State:MH 
+Phone Number:234567890
+Email:pratikshat@1
+
+
+FirstName: Akki
+LastName: mast
+City    : mumbai
+Email   : kjhgfd
+State   : maharashtra
+PhoneNum: 9876543

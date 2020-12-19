@@ -44,6 +44,16 @@ namespace AddressBook
             }
         }
 
+        public void WritePersonDetailTextFile()
+        {
+            FileReadWrite.WriteTxtFile(adressBookList);
+        }
+
+        public void ReadPersonDetailTxtFile()
+        {
+            FileReadWrite.ReadTxtFile();
+        }
+
         public void displayPersonInOrderByCity()
         {
             Console.WriteLine("\nEntered Person Details is in Order :");
