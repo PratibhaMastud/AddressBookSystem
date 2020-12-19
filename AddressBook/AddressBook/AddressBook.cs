@@ -64,6 +64,16 @@ namespace AddressBook
             FileReadWrite.ReadContactsInCSVFile();
         }
 
+        public void WriteContactsInJSONFile()
+        {
+            FileReadWrite.WriteContactsInJSONFile(adressBookList);
+        }
+
+        public void ReadContactsFronJSON()
+        {
+            FileReadWrite.ReadContactsFromJSONFile();
+        }
+
         public void displayPersonInOrderByCity()
         {
             Console.WriteLine("\nEntered Person Details is in Order :");

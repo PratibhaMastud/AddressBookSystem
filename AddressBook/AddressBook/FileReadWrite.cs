@@ -1,8 +1,8 @@
-﻿using CsvHelper;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
+
 
 namespace AddressBook
 {
@@ -10,6 +10,8 @@ namespace AddressBook
     {
         static String FilePath = @"C:\Users\prattii\Desktop\AddBookSysteam\AddressBook\AddressBook\TextFile1.txt";
         static String FilePathCsv = @"C:\Users\prattii\Desktop\AddBookSysteam\AddressBook\AddressBook\ReadWriteCsv.csv";
+        static String filePathJson = @"C:\Users\prattii\Desktop\AddBookSysteam\AddressBook\AddressBook\JsonFile.json";
+
         public static void WriteTxtFile(List<Person> persons)
         {
             if (File.Exists(FilePath))
@@ -18,7 +20,7 @@ namespace AddressBook
                 {
                     foreach (Person person in persons)
                     {
-                        streamWriter.WriteLine("FirstName: "+person.FirstName);
+                        streamWriter.WriteLine("FirstName: " + person.FirstName);
                         streamWriter.WriteLine("LastName: " + person.LastName);
                         streamWriter.WriteLine("City    : " + person.city);
                         streamWriter.WriteLine("Email   : " + person.email);
@@ -52,21 +54,6 @@ namespace AddressBook
                 Console.WriteLine("No such file exists");
             }
         }
-        /*public static void WriteContactsInCSVFile(List<Person> persons)
-        {
-            if (File.Exists(FilePathCsv))
-            {
-                using (StreamWriter streamWriter = new StreamWriter(FilePathCsv))
-                {
-                    using (CsvWriter csvobj = new CsvWriter(streamWriter, cultureInfo.)) ;
-                }
-                Console.WriteLine("Writting Contacts to the CSV file");
-            }
-            else
-            {
-                Console.WriteLine("No such file exists");
-            }
-        }*/
 
         public static void writeIntoCsvFile(List<Person> contacts)
         {
@@ -87,9 +74,9 @@ namespace AddressBook
             if (File.Exists(FilePathCsv))
             {
                 string[] csv = File.ReadAllLines(FilePathCsv);
-                foreach (string csValues in csv)
+                foreach (string csvValues in csv)
                 {
-                    string[] column = csValues.Split(",");
+                    string[] column = csvValues.Split(",");
                     foreach (string CSValues in column)
                     {
                         Console.WriteLine(CSValues);
@@ -100,6 +87,40 @@ namespace AddressBook
             {
                 Console.WriteLine("No such file exists");
             }
+        }
+
+        public static void WriteContactsInJSONFile(List<Person> contacts)
+        {
+            if (File.Exists(filePathJson))
+            {
+                JsonSerializer jsonSerializer = new JsonSerializer();
+                using (StreamWriter streamWriter = new StreamWriter(filePathJson))
+                using (JsonWriter writer = new JsonTextWriter(streamWriter))
+                {
+                    jsonSerializer.Serialize(writer, contacts);
+                }
+                Console.WriteLine("Writting Contacts to the JSON file");
+            }
+            else
+            {
+                Console.WriteLine("No such file exists");
+            }
+        }
+
+        public static void ReadContactsFromJSONFile()
+        {
+            if (File.Exists(filePathJson))
+            {
+                IList<Person> contactsRead = JsonConvert.DeserializeObject<IList<Person>>(File.ReadAllText(filePathJson));
+                foreach (Person contact in contactsRead)
+                {
+                    Console.Write(contact.ToString());
+                }
+            }
+                else
+                {
+                    Console.WriteLine("No such file exists");
+                }
         }
     }
 }
